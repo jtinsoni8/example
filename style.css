@@ -1,0 +1,175 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  /* for touch screen */
+  touch-action: none; 
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  background: #111; /* Dark background */
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Custom Cursor */
+body, a {
+  cursor: url('cursor.png'), auto;
+}
+
+/* Background with Gradient */
+body {
+  background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+  background-size: 600% 600%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3D Carousel */
+#drag-container, #spin-container {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg);
+}
+
+#drag-container img, #drag-container video {
+  transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 8px #fff;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+}
+
+#drag-container img:hover, #drag-container video:hover {
+  box-shadow: 0 0 15px #fffd;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+  transform: scale(1.1); /* Scaling effect on hover */
+}
+
+#drag-container p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(90deg);
+  color: #fff;
+}
+
+#ground {
+  width: 900px;
+  height: 900px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(90deg);
+  background: radial-gradient(circle, #9993, transparent);
+}
+
+#music-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Loading Animation */
+@keyframes spin {
+  from{
+    transform: rotateY(0deg);
+  } 
+  to{
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spinRevert {
+  from{
+    transform: rotateY(360deg);
+  } 
+  to{
+    transform: rotateY(0deg);
+  }
+}
+
+/* Particle.js container */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #111; /* Fallback color in case particles.js fails */
+}
+
+
+/* Mobile Devices (up to 768px) */
+@media screen and (max-width: 768px) {
+  #drag-container, #spin-container {
+    width: 100%;
+    height: auto;
+  }
+
+  #drag-container img, #drag-container video {
+    width: 80px; /* Adjust these sizes as needed */
+    height: 120px;
+  }
+
+  #ground {
+    width: 500px;
+    height: 500px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .call-to-action {
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px auto;
+  }
+}
+
+/* Extra small devices (up to 480px) */
+@media screen and (max-width: 480px) {
+  #drag-container, #spin-container {
+    width: 100%;
+    height: auto;
+  }
+
+  #drag-container img, #drag-container video {
+    width: 60px; /* Adjust these sizes as needed */
+    height: 90px;
+  }
+
+  #ground {
+    width: 300px;
+    height: 300px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .call-to-action {
+    font-size: 14px;
+    padding: 8px;
+    margin: 8px auto;
+  }
+}
